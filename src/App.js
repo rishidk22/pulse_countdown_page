@@ -1,24 +1,65 @@
 import React from 'react';
-import logo from './logo.svg';
+import Countdown from './Countdown.js'
+import Particles from 'react-particles-js';
+import Logo from "./circle-cropped.png"
+import { LayersManager, Layer } from 'react-layers-manager'
+
 import './App.css';
 
 function App() {
+  const currentDate = new Date();
+  const year = (currentDate.getMonth() === 11 && currentDate.getDate() > 23) ? currentDate.getFullYear() + 1 : currentDate.getFullYear();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="mainbody">
+      <div className="center_vert">
+        <img src={Logo}/>
+        <Countdown date={`${year}-12-24T00:00:00`} />
+      </div>
+      <Particles className="particles_top"
+      params={{
+        "particles": {
+            "number": {
+                "value": 250,
+                "density": {
+                    "enable": true,
+                    "value_area": 850
+                }
+            },
+            "line_linked": {
+                "enable": false,
+                "opacity": 0.02
+            },
+            "move": {
+                "direction": "up",
+                "speed": 2
+            },
+            "size": {
+                "value": 1
+            },
+            "opacity": {
+                "anim": {
+                    "enable": true,
+                    "speed": 1,
+                    "opacity_min": 0.05
+                }
+            }
+        },
+        "interactivity": {
+            "events": {
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                }
+            },
+            "modes": {
+                "push": {
+                    "particles_nb": 1
+                }
+            }
+        },
+        "retina_detect": true
+    }} />
     </div>
   );
 }
