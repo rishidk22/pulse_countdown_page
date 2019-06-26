@@ -12,8 +12,8 @@ function App() {
 
   return (
     <div className="mainbody">
-      <div className="center_vert">
-        <img src={Logo}/>
+      <div className="home_content">
+        <img className="logo" src={Logo}/>
         <Countdown date={`${year}-12-24T00:00:00`} />
       </div>
       <Particles className="particles_top"

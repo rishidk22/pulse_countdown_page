@@ -25,16 +25,31 @@ div.modal-content{
 }
 
 .logo{
-   border:1px solid white;
 }
 
-.center_vert{
+.home_content{
   z-index: 1;
   position: fixed;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+  transition: 0.3s;
+}
+
+.home_content:hover {
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-filter: none;
+  filter: none;
+  transition: 0.3s;
+
 }
 
 .App {
