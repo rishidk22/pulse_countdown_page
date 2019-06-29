@@ -4,19 +4,20 @@ body {
   overflow: hidden;
 }
 
-div.modal-content{
+div.modal-content {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     -o-box-shadow: none;
     box-shadow: none;
 }
 
-.txt{
+.txt {
   position: absolute !important;
-      top:-100%; left:0; right: 0; bottom:-100%;
-      margin: auto;
-    }
-.particles_top{
+  top:-100%; left:0; right: 0; bottom:-100%;
+  margin: auto;
+}
+
+.particles_top {
   position: absolute;
   right:0;
   top:0;
@@ -24,7 +25,7 @@ div.modal-content{
   width:100%;
 }
 
-.logo{
+.logo {
 }
 
 .home_content{
@@ -48,8 +49,7 @@ div.modal-content{
   transform: translate(-50%, -50%);
   -webkit-filter: none;
   filter: none;
-  transition: 0.3s;
-
+  transition: 3s;
 }
 
 .App {
@@ -73,14 +73,13 @@ div.modal-content{
   color: white;
 }
 
-.mainbody{
-       position: absolute;
-       top: 0px; /* Header Height */
-       bottom: 0px; /* Footer Height */
-       width: 100%;
-       background-image: linear-gradient(-180deg, #101427 0%, #592368 100%);
-
-    }
+.mainbody {
+  position: absolute;
+  top: 0px; /* Header Height */
+  bottom: 0px; /* Footer Height */
+  width: 100%;
+  background-image: linear-gradient(-180deg, #101427 0%, #592368 100%);
+}
 .clearonclick {
   float: left;
   max-width: 31%;
@@ -133,7 +132,7 @@ div.modal-content{
   }
 }
 
-.Countdown{
+.Countdown {
   margin: 10px auto;
   padding-bottom: 20px;
 }
@@ -142,13 +141,13 @@ div.modal-content{
   display: inline-block;
 }
 
-.Countdown-col-element{
+.Countdown-col-element {
   display: inline-block;
   margin: 0 20px;
   display: flex;
   flex-direction: column;
 }
 
-.Countdown-col-element strong{
+.Countdown-col-element strong {
   font-size: 50px;
 }
