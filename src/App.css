@@ -17,7 +17,7 @@ div.modal-content {
   margin: auto;
 }
 
-.particles_top {
+.particles-top {
   position: absolute;
   right:0;
   top:0;
@@ -28,19 +28,25 @@ div.modal-content {
 .logo {
 }
 
-.home_content{
+@keyframes focus {
+  0%   { filter: blur(20px) }
+  100% { filter: blur(0) }
+}
+
+.home-content {
   z-index: 1;
   position: fixed;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  -webkit-filter: blur(2px);
-  filter: blur(2px);
-  transition: 0.3s;
+  filter: blur(20px);
+  animation: 3s ease-out 0.5s 1 focus;
+  /* Duration, function, delay, number of animations, and name of animation */
+  animation-fill-mode: forwards;
 }
 
-.home_content:hover {
+/* .home-content:hover {
   z-index: 1;
   position: fixed;
   top: 50%;
@@ -50,7 +56,7 @@ div.modal-content {
   -webkit-filter: none;
   filter: none;
   transition: 3s;
-}
+} */
 
 .App {
   text-align: center;
@@ -137,7 +143,7 @@ div.modal-content {
   padding-bottom: 20px;
 }
 
-.Countdown-col{
+.Countdown-col {
   display: inline-block;
 }
 
