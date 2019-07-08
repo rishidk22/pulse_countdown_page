@@ -5,10 +5,10 @@ body {
 }
 
 div.modal-content {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -o-box-shadow: none;
-    box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
 }
 
 .txt {
@@ -25,9 +25,6 @@ div.modal-content {
   width:100%;
 }
 
-.logo {
-}
-
 @keyframes focus {
   0%   { filter: blur(20px) }
   100% { filter: blur(0) }
@@ -41,7 +38,7 @@ div.modal-content {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   filter: blur(20px);
-  animation: 3s ease-out 0.5s 1 focus;
+  animation: 3s ease-out .5s 1 focus;
   /* Duration, function, delay, number of animations, and name of animation */
   animation-fill-mode: forwards;
 }
@@ -85,57 +82,6 @@ div.modal-content {
   bottom: 0px; /* Footer Height */
   width: 100%;
   background-image: linear-gradient(-180deg, #101427 0%, #592368 100%);
-}
-.clearonclick {
-  float: left;
-  max-width: 31%;
-  position: relative;
-  margin: .5%;
-  img {
-    width: 100%;
-    margin-bottom: -4px;
-  }
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background: $bg;
-    color: #fff;
-    opacity: 0;
-    h2 {
-      padding-top: 20%;
-      font-family: 'Droid Serif', serif;
-    }
-    p {
-      font-family: 'Julius Sans One', sans-serif;
-    }
-  }
-  &:not(:hover) {
-    .overlay {
-      opacity: 1;
-    }
-    img {
-      -webkit-filter: blur(2px);
-      filter: blur(2px);
-    }
-  }
-}
-
-
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .Countdown {
