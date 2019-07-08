@@ -3,20 +3,38 @@ body {
   color: white;
   overflow: hidden;
 }
-
-div.modal-content{
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -o-box-shadow: none;
-    box-shadow: none;
+a {
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+    color:white;
+}
+span{
+  font-size: 17px;
+  font-weight: bold;
+  font-size: 17px;
+  font-weight: bold;
 }
 
-.txt{
+div.modal-content {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+
+.txt {
   position: absolute !important;
-      top:-100%; left:0; right: 0; bottom:-100%;
-      margin: auto;
-    }
-.particles_top{
+  top:-100%; left:0; right: 0; bottom:-100%;
+  margin: auto;
+}
+
+.particles{
   position: absolute;
   right:0;
   top:0;
@@ -26,22 +44,25 @@ div.modal-content{
   background-image: linear-gradient(-180deg, #101427 0%, #592368 100%);
 }
 
-.logo{
+@keyframes focus {
+  0%   { filter: blur(20px) }
+  100% { filter: blur(0) }
 }
 
-.home_content{
+.home-content {
   z-index: 1;
   position: fixed;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  -webkit-filter: blur(2px);
-  filter: blur(2px);
-  transition: 0.3s;
+  filter: blur(20px);
+  animation: 3s ease-out .5s 1 focus;
+  /* Duration, function, delay, number of animations, and name of animation */
+  animation-fill-mode: forwards;
 }
 
-.home_content:hover {
+/* .home-content:hover {
   z-index: 1;
   position: fixed;
   top: 50%;
@@ -50,9 +71,8 @@ div.modal-content{
   transform: translate(-50%, -50%);
   -webkit-filter: none;
   filter: none;
-  transition: 0.3s;
-
-}
+  transition: 3s;
+} */
 
 .App {
   text-align: center;
@@ -82,7 +102,6 @@ div.modal-content{
        height: 100vh;
        width: 100%;
        z-index: 2;
-       background: transparent;
 }
 .clearonclick {
   float: left;
@@ -136,23 +155,28 @@ div.modal-content{
   }
 }
 
-.Countdown{
+.Countdown {
   margin: 10px auto;
   padding-bottom: 20px;
 }
 
-.Countdown-col{
+.Countdown-col {
   display: inline-block;
 }
 
-.Countdown-col-element{
+.Countdown-col-element {
   display: inline-block;
   margin: 0 20px;
   display: flex;
   flex-direction: column;
 }
 
-.Countdown-col-element strong{
+.Countdown-col-element strong {
   font-size: 50px;
 }
 
+.ui.button{  background: radial-gradient(#592368, #3b1745);}
+.ui.button:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #3b1745;
+}

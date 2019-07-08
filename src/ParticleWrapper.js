@@ -4,7 +4,7 @@ import Particles from 'react-particles-js';
 class ParticleWrapper extends Component {
     render() {
         return (
-            <Particles className="particles_top"
+            <Particles className="particles"
                 params={{
                     "particles": {
                         "number": {

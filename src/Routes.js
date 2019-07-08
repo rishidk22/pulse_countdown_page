@@ -13,6 +13,7 @@ import Sponsors from './Sponsors';
 import Contact from './Contact';
 import About from './About';
 import Register from './Register';
+import SponsorUs from './SponsorUs'
 
 import Logo from "./circle-cropped.png";
 import ParticleWrapper from './ParticleWrapper';
@@ -21,36 +22,12 @@ import NavigationBar from './NavigationBar';
 
 class Routes extends Component {
     render() {
+      // removed <NavigationBar />
+
         return (
             <div>
-                
-
                 <Router>
                     <div class="mainbody">
-                        {/* <Navbar position="absolute">
-                            <Navbar.Brand href="/">
-                                {'Pulse Visions'}
-                            </Navbar.Brand> 
-                            <Nav.Link href="/schedule">Schedule</Nav.Link>
-                        </Navbar> */}
-
-                        {/* <ResponsiveMenu
-                            menuOpenButton={<div />}
-                            menuCloseButton={<div />}
-                            changeMenuOn="500px"
-                            largeMenuClassName="large-menu-classname"
-                            smallMenuClassName="small-menu-classname"
-                            menu={
-                                <ul>
-                                    <li>Item 1</li>
-                                    <li>Item 2</li>
-                                    <li>Item 3</li>
-                                    <li>Item 4</li>
-                                </ul>
-                            }
-                        /> */}
-
-                        <NavigationBar />
 
                         <ParticleWrapper />
 
@@ -62,7 +39,9 @@ class Routes extends Component {
                         <Route path="/contact" component={Contact} />
                         <Route path="/about" component={About} />
                         <Route path="/register" component={Register} />
-                        
+
+                        <Route path="/sponsor_us" component={SponsorUs}/>
+
 
                     </div>
                 </Router>
