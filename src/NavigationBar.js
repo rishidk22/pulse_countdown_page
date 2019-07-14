@@ -6,9 +6,14 @@ import styled from 'styled-components';
 import logo from './circle-cropped.png';
 
 const Menu = styled.div`
+    // Solid white line
     border-bottom: 2px solid White;
+
+    // Cut line off at ends
+    margin-left: 50px;
+    margin-right: 50px;
+
     padding-top: 10px;
-    padding-left: 20px;
 
     ul {
         padding: 0;
@@ -27,7 +32,7 @@ const Menu = styled.div`
         color: White;
         
         &:hover {
-            color: purple;
+            color: rgb(212, 7, 212);
         }
     }
     
@@ -36,7 +41,7 @@ const Menu = styled.div`
         li{
             padding: 10px 0;
             display: block;
-            margin-left: 0;
+            margin-right: 0;
         }
     }
     `;
@@ -54,14 +59,13 @@ class NavigationBar extends Component {
                     menuOpenButton={<FaBars size={30}/>}
                     menuCloseButton={<FaAngleUp size={30}/>}
                     menu={
-                        <div>
-                            <Menu className='text-left'>
+                        <div className="menuContainer">
+                            <Menu className='text-right menuComponent'>
                                 <ul>
-                                    <li>
-                                        <Link to='/'>
-                                            Home
-                                            {/* <img width="2%" height="2%" src={logo} /> */}
-                                        </Link>
+                                    <li className="cornerIcon">
+                                    <Link to='/' className="cornerIcon">
+                                        <img width="100%" height="100%" src={logo} alt="Home" />
+                                    </Link>
                                     </li>
                                     <li>
                                         <Link to='/schedule'>Schedule</Link>
@@ -86,7 +90,6 @@ class NavigationBar extends Component {
                                     </li>
                                 </ul>
                             </Menu>
-
                         </div>
                     }
                 />
