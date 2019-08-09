@@ -140,7 +140,10 @@ div.modal-content {
   }
 }
 
-
+.center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
 .App-link {
   color: #61dafb;

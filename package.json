@@ -15,6 +15,7 @@
     "react-layer-stack": "^4.2.1",
     "react-layers-manager": "^0.1.2",
     "react-particles-js": "^2.6.0",
+    "react-pdf": "^4.1.0",
     "react-responsive-navbar": "^1.0.11",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
