@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/rishidk22/pulse_countdown_page/static/css/main.a4817559.chunk.css",
+    "main.js": "/rishidk22/pulse_countdown_page/static/js/main.95c36051.chunk.js",
+    "main.js.map": "/rishidk22/pulse_countdown_page/static/js/main.95c36051.chunk.js.map",
+    "runtime~main.js": "/rishidk22/pulse_countdown_page/static/js/runtime~main.ab879785.js",
+    "runtime~main.js.map": "/rishidk22/pulse_countdown_page/static/js/runtime~main.ab879785.js.map",
+    "static/css/2.ca5a46fc.chunk.css": "/rishidk22/pulse_countdown_page/static/css/2.ca5a46fc.chunk.css",
+    "static/js/2.f1f1c5d7.chunk.js": "/rishidk22/pulse_countdown_page/static/js/2.f1f1c5d7.chunk.js",
+    "static/js/2.f1f1c5d7.chunk.js.map": "/rishidk22/pulse_countdown_page/static/js/2.f1f1c5d7.chunk.js.map",
+    "81b2538ab714533ac746.worker.js": "/rishidk22/pulse_countdown_page/81b2538ab714533ac746.worker.js",
+    "81b2538ab714533ac746.worker.js.map": "/rishidk22/pulse_countdown_page/81b2538ab714533ac746.worker.js.map",
+    "index.html": "/rishidk22/pulse_countdown_page/index.html",
+    "precache-manifest.dfc6dffc4dde458a59d2cae1c427688c.js": "/rishidk22/pulse_countdown_page/precache-manifest.dfc6dffc4dde458a59d2cae1c427688c.js",
+    "service-worker.js": "/rishidk22/pulse_countdown_page/service-worker.js",
+    "static/css/2.ca5a46fc.chunk.css.map": "/rishidk22/pulse_countdown_page/static/css/2.ca5a46fc.chunk.css.map",
+    "static/css/main.a4817559.chunk.css.map": "/rishidk22/pulse_countdown_page/static/css/main.a4817559.chunk.css.map",
+    "static/media/semantic.min.css": "/rishidk22/pulse_countdown_page/static/media/outline-icons.ef60a4f6.woff",
+    "static/media/circle-cropped.png": "/rishidk22/pulse_countdown_page/static/media/circle-cropped.2d37f18a.png"
+  }
+}
