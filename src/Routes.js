@@ -31,16 +31,15 @@ class Routes extends Component {
 
                         <ParticleWrapper />
 
-
-
+                        <Route exact path="" component={App} />
                         <Route exact path="/" component={App} />
-                        <Route path="/schedule" component={Schedule} />
-                        <Route path="/events" component={Events} />
-                        <Route path="/speakers" component={Speakers} />
-                        <Route path="/sponsors" component={Sponsors} />
-                        <Route path="/contact" component={Contact} />
-                        <Route path="/about" component={About} />
-                        <Route path="/register" component={Register} />
+                        <Route path="/pulse_countdown_page/schedule" component={Schedule} />
+                        <Route path="/pulse_countdown_page/events" component={Events} />
+                        <Route path="/pulse_countdown_page/speakers" component={Speakers} />
+                        <Route path="/pulse_countdown_page/sponsors" component={Sponsors} />
+                        <Route path="/pulse_countdown_page/contact" component={Contact} />
+                        <Route path="/pulse_countdown_page/about" component={About} />
+                        <Route path="/pulse_countdown_page/register" component={Register} />
 
                         <Route path="/sponsor_us" component={SponsorUs}/>
                         <Route path="/pulse_countdown_page" component={App} />
