@@ -26,7 +26,7 @@ class Routes extends Component {
 
         return (
             <div>
-                <Router basename="/pulse_countdown_page">
+                <Router basename="/">
                     <div class="mainbody">
 
                         <ParticleWrapper />
