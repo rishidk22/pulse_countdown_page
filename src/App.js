@@ -13,7 +13,7 @@ import './App.css';
 class App extends Component {
   render() {
     const currentDate = new Date();
-    const year = (currentDate.getMonth() === 11 && currentDate.getDate() > 23) ? currentDate.getFullYear() + 1 : currentDate.getFullYear();
+    const year = 2020;
 
     return (
       <div className="mainbody">
