@@ -31,6 +31,8 @@ class Routes extends Component {
 
                         <ParticleWrapper />
 
+
+
                         <Route exact path="/" component={App} />
                         <Route path="/schedule" component={Schedule} />
                         <Route path="/events" component={Events} />
@@ -41,7 +43,7 @@ class Routes extends Component {
                         <Route path="/register" component={Register} />
 
                         <Route path="/sponsor_us" component={SponsorUs}/>
-
+                        <Route path="pulse_countdown_page" component={App} />
 
                     </div>
                 </Router>
