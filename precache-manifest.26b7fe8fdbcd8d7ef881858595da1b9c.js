@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pulse_countdown_page/a3bfb4ee2ac3936c4c8c.worker.js"
   },
   {
-    "revision": "3adb200a5c25867458433f25f40f68c4",
+    "revision": "f213abb45386bef8687f0e21a4e36032",
     "url": "/pulse_countdown_page/index.html"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pulse_countdown_page/static/css/2.d2b53307.chunk.css"
   },
   {
-    "revision": "2caa812c4b4379a156d5",
+    "revision": "11c81aa80b06ae9b28e0",
     "url": "/pulse_countdown_page/static/css/main.a4817559.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pulse_countdown_page/static/js/2.c07bd6c3.chunk.js"
   },
   {
-    "revision": "2caa812c4b4379a156d5",
-    "url": "/pulse_countdown_page/static/js/main.70829f78.chunk.js"
+    "revision": "11c81aa80b06ae9b28e0",
+    "url": "/pulse_countdown_page/static/js/main.6e92c296.chunk.js"
   },
   {
     "revision": "15431187c8a5bbd73d85",
