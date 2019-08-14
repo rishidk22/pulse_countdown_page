@@ -9,7 +9,7 @@ import ParticleWrapper from './ParticleWrapper.js';
 
 ReactDOM.render(
     <LayersManager>
-        <Routes basename={process.env.PUBLIC_URL}/>
+        <Routes/>
     </LayersManager>,
     document.getElementById('root')
 );
