@@ -22,13 +22,14 @@ import NavigationBar from './NavigationBar';
 
 class Routes extends Component {
     render() {
-      // removed <NavigationBar />
+       
 
         return (
             <div>
                 <Router basename="/pulse_countdown_page">
+                    
                     <div class="mainbody">
-
+                        <NavigationBar />
                         <ParticleWrapper />
 
                         <Route exact path="/" component={App} />
