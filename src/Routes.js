@@ -43,7 +43,7 @@ class Routes extends Component {
                         <Route path="/register" component={Register} />
 
                         <Route path="/sponsor_us" component={SponsorUs}/>
-                        <Route path="pulse_countdown_page" component={App} />
+                        <Route path="/pulse_countdown_page" component={App} />
 
                     </div>
                 </Router>
