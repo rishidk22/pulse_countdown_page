@@ -9,16 +9,139 @@ a {
   text-decoration: none;
   color: white;
 }
-a:hover, a:visited, a:link, a:active
-{
-    text-decoration: none;
-    color:white;
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+  color: white;
 }
-span{
+span {
   font-size: 17px;
   font-weight: bold;
   font-size: 17px;
   font-weight: bold;
+}
+
+.Typist {
+  font-family: monospace;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.7;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-align: left;
+}
+
+input[type="text"] {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-family: monospace;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.7;
+  color: white;
+  margin-right: 100%;
+  width: 80%;
+}
+
+div#details {
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 1.7;
+  margin-top: -20px;
+  padding-bottom: 15px;
+  text-align: left;
+}
+
+div.active {
+  animation: ease 1s;
+  margin-top: 20px;
+  animation-name: error_notification;
+}
+
+@keyframes error_notification {
+  from {
+    margin-top: 0px;
+  } to {
+    margin-top: 20px;
+  }
+}
+
+div#input_row {
+  margin-bottom: 40px;
+}
+
+.fade-in {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  -moz-animation: fadeIn ease 2s;
+  -o-animation: fadeIn ease 2s;
+  -ms-animation: fadeIn ease 2s;
+}
+
+
+@keyframes fadeIn{
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+/* The style below is just for the appearance of the example div */
+
+.style {
+  width:90vw; height:90vh;
+  text-align:center;
+  padding-top:calc(50vh - 50px);
+  margin-left:5vw;
+  border:4px double #F00;
+  background-color:#000;
+}
+.style p {
+  color:#fff;
+  font-size:50px;
 }
 
 div.modal-content {
@@ -28,25 +151,42 @@ div.modal-content {
   box-shadow: none;
 }
 
+.dollar {
+  font-family: monospace;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.7;
+  color: white;
+  text-align: left;
+}
+
 .txt {
   position: absolute !important;
-  top:-100%; left:0; right: 0; bottom:-100%;
+  top: -100%;
+  left: 0;
+  right: 0;
+  bottom: -100%;
   margin: auto;
 }
 
-.particles{
+.particles {
   position: absolute;
-  right:0;
-  top:0;
-  height:100%;
-  width:100%;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
   z-index: -1;
   background-image: linear-gradient(-180deg, #101427 0%, #592368 100%);
 }
 
 @keyframes focus {
-  0%   { filter: blur(20px) }
-  100% { filter: blur(0) }
+  0% {
+    filter: blur(20px);
+  }
+  100% {
+    filter: blur(0);
+  }
 }
 
 .home-content {
@@ -57,7 +197,7 @@ div.modal-content {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   filter: blur(20px);
-  animation: 3s ease-out .5s 1 focus;
+  animation: 3s ease-out 0.5s 1 focus;
   /* Duration, function, delay, number of animations, and name of animation */
   animation-fill-mode: forwards;
 }
@@ -95,19 +235,19 @@ div.modal-content {
   color: white;
 }
 
-.mainbody{
-       position: relative;
-       top: 0px; /* Header Height */
-       bottom: 0px; /* Footer Height */
-       height: 100vh;
-       width: 100%;
-       z-index: 2;
+.mainbody {
+  position: relative;
+  top: 0px; /* Header Height */
+  bottom: 0px; /* Footer Height */
+  height: 100vh;
+  width: 100%;
+  z-index: 2;
 }
 .clearonclick {
   float: left;
   max-width: 31%;
   position: relative;
-  margin: .5%;
+  margin: 0.5%;
   img {
     width: 100%;
     margin-bottom: -4px;
@@ -123,10 +263,10 @@ div.modal-content {
     opacity: 0;
     h2 {
       padding-top: 20%;
-      font-family: 'Droid Serif', serif;
+      font-family: "Droid Serif", serif;
     }
     p {
-      font-family: 'Julius Sans One', sans-serif;
+      font-family: "Julius Sans One", sans-serif;
     }
   }
   &:not(:hover) {
@@ -178,10 +318,10 @@ div.modal-content {
   font-size: 50px;
 }
 
-.ui.button{  
-             background-color: #592368;
+.ui.button {
+  background-color: #592368;
 }
-.ui.button:hover{
+.ui.button:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: #3b1745;
 }
