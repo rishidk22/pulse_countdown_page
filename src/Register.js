@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ParticleWrapper from "./ParticleWrapper";
 import Typist from "react-typist";
 import * as C from "./Constants";
+import { Button } from 'reactstrap'
 
 class Register extends Component {
 
@@ -15,8 +16,16 @@ class Register extends Component {
     }
   
     focusOnInput = () => {
-    this.refs[this.props.currPrompt].focus();
+        if(this.props.currPrompt !== C.SUBMIT)
+            this.refs[this.props.currPrompt].focus();
   };
+
+  animateButtons = () => {
+    console.log(this.refs)
+    this.setState({
+      submitButton: 'fade-in'
+    })
+  }
 
   genJSX = () => {
     if(!this.props.renderedPrompts.includes(this.props.currPrompt)) {
@@ -42,6 +51,13 @@ class Register extends Component {
         detailText = "Emails will be used for checking into the Pulse 2020 conference as well as essential communciations."
         break
       }
+
+      case C.SUBMIT: {
+          promptText = (<p>Would you like to <strong>submit your registration</strong>?</p>)
+          showDetails = false
+          errText = ''
+          break
+      }
     }
 
     let promptJSX = (
@@ -55,7 +71,7 @@ class Register extends Component {
                 hideWhenDone: true,
                 hideWhenDoneDelay: 10
               }}
-              onTypingDone={() => this.focusOnInput()}
+              onTypingDone={this.props.currPrompt !== C.SUBMIT ? () => this.focusOnInput() : () => this.animateButtons()}
             >
               {promptText}
             </Typist>
@@ -84,9 +100,10 @@ class Register extends Component {
             <p className="dollar">pulse2020$</p>
           </div>
           <div className="col-sm-10">
-            <form
+            {this.props.currPrompt !== C.SUBMIT ? (<form
               onSubmit={e => {
                 e.preventDefault();
+                
                 this.props.setInput(this.refs[this.props.currPrompt].value);
                 this.props.passRefs(this.refs);
               }}
@@ -96,7 +113,7 @@ class Register extends Component {
                 type="text"
                 spellCheck="false"
               />
-            </form>
+            </form>) : (<Button ref={C.SUBMIT} id="submit_registration" onClick={() => this.props.submitForm()}>Yes</Button>)}
           </div>
         </div>
       </div>
@@ -109,7 +126,7 @@ class Register extends Component {
   render() {
     this.genJSX()
     return (
-      <div className="container">
+      <div className="container" ref="registration_form">
         {this.props.promptJSX}
         <ParticleWrapper />
       </div>

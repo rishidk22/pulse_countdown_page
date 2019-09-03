@@ -99,6 +99,18 @@ div.inactive {
 
 div#input_row {
   margin-bottom: 40px;
+  margin-top: 5px;
+}
+
+#submit_registration {
+  float: left;
+  font-family: monospace;
+  margin-top: 5px;
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  -moz-animation: fadeIn ease 2s;
+  -o-animation: fadeIn ease 2s;
+  -ms-animation: fadeIn ease 2s;
 }
 
 .fade-in {

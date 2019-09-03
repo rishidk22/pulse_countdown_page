@@ -38,6 +38,11 @@ class App extends Component {
     })
   }
 
+  submitForm = () => {
+    console.log(this.state.childrenRefs)
+    this.state.childrenRefs.registration_form.classList.add('fade-out')
+  }
+
   setInput = e => {
     switch(this.state.currPrompt) {
       case C.FIRSTNAME: {
@@ -74,16 +79,26 @@ class App extends Component {
         if(this.validateInput(e)) {
           this.state.childrenRefs.errMessage.classList.remove('fade-in')
           this.state.childrenRefs.errMessage.classList.add('fade-out')
-          this.state.childrenRefs.email_row.classList.remove('active')
-          this.state.childrenRefs.email_row.classList.add('inactive')
+          if(this.state.childrenRefs.email_row.classList.contains('active')) {
+            this.state.childrenRefs.email_row.classList.remove('active')
+            this.state.childrenRefs.email_row.classList.add('inactive')
+          }
           //this.state.childrenRefs.errMessage.classList.add('transparent')
           this.setState({
-            email: e
+            email: e,
+            displayErr: false,
+            currPrompt: C.SUBMIT
           })
         } else {
           //console.log(this.state.childrenRefs)
           console.log(this.state.childrenRefs)
-          this.state.childrenRefs.email_row.classList.add('active')
+          if(this.state.childrenRefs.email_row.classList.contains('inactive')) {
+            this.state.childrenRefs.email_row.classList.add('active')
+            this.state.childrenRefs.email_row.classList.remove('inactive')
+            this.state.childrenRefs.errMessage.classList.remove('fade-out')
+          } else {
+            this.state.childrenRefs.email_row.classList.add('active')
+          }
           this.state.childrenRefs.errMessage.classList.remove('transparent')
           this.state.childrenRefs.errMessage.classList.add('fade-in')
           this.setState({
@@ -94,6 +109,13 @@ class App extends Component {
         //   email: e,
         //   currPrompt: C.EMAIL
         // })
+        break
+      }
+
+      case C.SUBMIT: {
+        this.setState({
+          displayErr: false
+        })
         break
       }
     }
@@ -118,6 +140,7 @@ class App extends Component {
                   setStartTime={() => this.setState({formStartTime: new Date()})}
                   passRefs={(refs) => this.setState({childrenRefs: refs})}
                   displayErr={this.state.displayErr}
+                  submitForm={() => this.submitForm()}
                   />
       </div>
     );
