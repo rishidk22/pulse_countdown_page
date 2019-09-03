@@ -6,9 +6,8 @@ import * as C from "./Constants";
 class Register extends Component {
 
     componentDidUpdate = prevProps => {
-        if(prevProps.displayErr === false && this.props.displayErr === true) {
+        if(prevProps.displayErr !== this.props.displayErr)
             this.forceUpdate()
-        }
     }
 
     componentDidMount = () => {
@@ -32,13 +31,15 @@ class Register extends Component {
 
       case C.LASTNAME: {
         promptText = (<p>What is your <strong>last name</strong>?</p>);
+        errText = "Please enter you last name before continuing."
         break
       }
 
       case C.EMAIL: {
         promptText = (<p>What is your <strong>email address</strong>?</p>)
         showDetails = true
-        detailText = "put some info about how emails will be used"
+        errText = "Hmm... that does not look like a valid email."
+        detailText = "Emails will be used for checking into the Pulse 2020 conference as well as essential communciations."
         break
       }
     }
@@ -60,20 +61,20 @@ class Register extends Component {
             </Typist>
           </div>
         </div>
-        {showDetails && (
+        {showDetails && 
           <div className="row">
             <div className="col" id="details">
               <p className="fade-in">/* {detailText} */</p>
             </div>
           </div>
-        )}
-        {false && (
-          <div className="row" style={{marginTop: '20px'}}>
-            <div className="col" id="details">
+        }
+        {
+          <div className="row transparent" ref="errMessage">
+            <div className="col" id="details" style={{marginTop: '5px'}}>
               <p className="fade-in">/* {errText} */</p>
             </div>
           </div>
-        )}
+        }
         <div
           className="row"
           ref={this.props.currPrompt === C.EMAIL ? "email_row" : ""}
@@ -106,9 +107,9 @@ class Register extends Component {
   };
 
   render() {
+    this.genJSX()
     return (
       <div className="container">
-        {this.genJSX()}
         {this.props.promptJSX}
         <ParticleWrapper />
       </div>

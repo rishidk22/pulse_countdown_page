@@ -13,6 +13,7 @@ import Typist from 'react-typist'
 
 
 import './App.css';
+import { thisExpression } from '@babel/types';
 
 class App extends Component {
 
@@ -43,7 +44,8 @@ class App extends Component {
         if (/^[A-Za-z\s]+$/.test(e)) {
           this.setState({
             firstName: e,
-            currPrompt: C.LASTNAME
+            currPrompt: C.LASTNAME,
+            displayErr: false
           })
         } else {
           this.setState({
@@ -54,21 +56,36 @@ class App extends Component {
       }
 
       case C.LASTNAME: {
-        this.setState({
-          lastName: e,
-          currPrompt: C.EMAIL
-        })
+        if (/^[A-Za-z\s]+$/.test(e)) {
+          this.setState({
+            lastName: e,
+            currPrompt: C.EMAIL,
+            displayErr: false
+          })
+        } else {
+          this.setState({
+            displayErr: true
+          })
+        }
         break
       }
 
       case C.EMAIL: {
         if(this.validateInput(e)) {
+          this.state.childrenRefs.errMessage.classList.remove('fade-in')
+          this.state.childrenRefs.errMessage.classList.add('fade-out')
+          this.state.childrenRefs.email_row.classList.remove('active')
+          this.state.childrenRefs.email_row.classList.add('inactive')
+          //this.state.childrenRefs.errMessage.classList.add('transparent')
           this.setState({
             email: e
           })
         } else {
           //console.log(this.state.childrenRefs)
+          console.log(this.state.childrenRefs)
           this.state.childrenRefs.email_row.classList.add('active')
+          this.state.childrenRefs.errMessage.classList.remove('transparent')
+          this.state.childrenRefs.errMessage.classList.add('fade-in')
           this.setState({
             displayErr: true
           })
