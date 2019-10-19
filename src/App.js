@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import Register from './Register'
 import * as C from './Constants'
 import Typist from 'react-typist'
-
+import dropzone from './dropzone'
 
 
 
@@ -26,7 +26,7 @@ class App extends Component {
     displayErr: false,
     firstName: '',
     lastName: '',
-
+    email: ''
   }
 
   updatePromptJSX = JSX => {
@@ -40,8 +40,66 @@ class App extends Component {
 
   submitForm = () => {
     console.log(this.state.childrenRefs)
+    this.postRegistree()
     this.state.childrenRefs.registration_form.classList.add('fade-out')
   }
+
+  checkIfEmailExists = async e => {
+    // Create Body
+    let body = {"email": e}
+    // Create Heades
+    let h = new Headers()
+    h.append('Accept', 'application/json')
+    h.append('Content-Type', 'application/json')
+    // Create Options
+    let options = {
+      method: 'POST', 
+      headers: h,
+      body: `{ "email":` + `"${e}"` + `}`
+    }
+    let request = new Request(C.VERIFY_EMAIL, options)
+    await fetch(request)
+    .then((response) => {
+      if(response.ok) {
+        this.setState({email: e})
+        return true
+      } else {
+        return false
+      }
+    })
+    .catch((err) => {
+      console.log("error", err)
+    })
+  }
+  
+  postRegistree = async () => {
+    // Create Heades
+    let h = new Headers()
+    h.append('Accept', 'application/json')
+    h.append('Content-Type', 'application/json')
+    let e = this.state
+    // Create Options
+    let options = {
+      method: 'POST', 
+      headers: h,
+      body: `{  "name":` + `"${e.firstName}` + ` ${e.lastName}",` +
+               `"email":` + `"${e.email}"` + `}`
+    }
+    let request = new Request(C.VERIFY_EMAIL, options)
+    await fetch(request)
+    .then((response) => {
+      if(response.ok) {
+        console.log("SUCCESS")
+        return response.json()
+      } else {
+        console.log("FAIL")
+      }
+    })
+    .catch((err) => {
+      console.log("error", err)
+    })
+  }
+    
 
   setInput = e => {
     switch(this.state.currPrompt) {
@@ -77,17 +135,19 @@ class App extends Component {
 
       case C.EMAIL: {
         if(this.validateInput(e)) {
+          console.log( this.checkIfEmailExists(e))
           this.state.childrenRefs.errMessage.classList.remove('fade-in')
           this.state.childrenRefs.errMessage.classList.add('fade-out')
           if(this.state.childrenRefs.email_row.classList.contains('active')) {
             this.state.childrenRefs.email_row.classList.remove('active')
             this.state.childrenRefs.email_row.classList.add('inactive')
           }
+
           //this.state.childrenRefs.errMessage.classList.add('transparent')
           this.setState({
             email: e,
             displayErr: false,
-            currPrompt: C.SUBMIT
+            currPrompt: C.MAJOR
           })
         } else {
           //console.log(this.state.childrenRefs)
@@ -112,9 +172,33 @@ class App extends Component {
         break
       }
 
+      case C.MAJOR: {
+        if(e == C.OTHER_MAJOR) {
+          this.setState({
+            currPrompt: C.OTHER_MAJOR,
+            displayErr: false
+          })
+        } else {
+          this.setState({
+            currPrompt: C.SUBMIT,
+            major: e,
+            displayErr: false
+          })
+        }
+        break
+      }
+
       case C.SUBMIT: {
         this.setState({
           displayErr: false
+        })
+        break
+      }
+
+      case C.OTHER_MAJOR: {
+        this.setState({
+          currPrompt: C.SUBMIT,
+          major: e
         })
         break
       }
@@ -129,9 +213,10 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div>
+        <dropzone />
+        <ParticleWrapper />
         <Register currPrompt={this.state.currPrompt} 
                   setInput={(e) => this.setInput(e)}
                   promptJSX={this.state.promptJSX}
@@ -143,6 +228,7 @@ class App extends Component {
                   submitForm={() => this.submitForm()}
                   />
       </div>
+
     );
   }
 }

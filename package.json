@@ -13,6 +13,7 @@
     "react-bootstrap-modal": "^4.2.0",
     "react-countdown-timer-component": "^1.0.2",
     "react-dom": "^16.8.6",
+    "react-dropzone": "^10.1.10",
     "react-icons": "^3.7.0",
     "react-layer-stack": "^4.2.1",
     "react-layers-manager": "^0.1.2",
