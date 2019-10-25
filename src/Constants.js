@@ -7,6 +7,7 @@ export const SUBMIT = "Would you like to submit your registration?"
 export const MAJOR = "What is your major?"
 export const OTHER_MAJOR = "other_major"
 export const VERIFY_EMAIL = "https://pulseapi2020.herokuapp.com/verify_email"
+export const POST_REGISTREE = "https://pulseapi2020.herokuapp.com/register_attendee"
 export const MAJOR_LIST = [
     "Aerospace Engineering",
     "Agricultural Engineering",

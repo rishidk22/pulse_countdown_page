@@ -26,17 +26,27 @@ class App extends Component {
     displayErr: false,
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    major: '', 
+    validEmail: null,
   }
 
   updatePromptJSX = JSX => {
+    let index;
     let promptJSX = this.state.promptJSX.slice()
-    let renderedPrompts = this.state.renderedPrompts.slice()
+    let renderedPrompts = this.state.renderedPrompts.slice().concat(this.state.currPrompt)
+    if(this.state.currPrompt === C.OTHER_MAJOR) {
+      if((index = renderedPrompts.indexOf(C.SUBMIT)) > -1) {
+        renderedPrompts.splice(index, 1)
+      }
+    }
     this.setState({
       promptJSX: promptJSX.concat(JSX),
-      renderedPrompts: renderedPrompts.concat(this.state.currPrompt)
+      renderedPrompts
     })
   }
+
+  
 
   submitForm = () => {
     console.log(this.state.childrenRefs)
@@ -45,9 +55,8 @@ class App extends Component {
   }
 
   checkIfEmailExists = async e => {
-    // Create Body
-    let body = {"email": e}
     // Create Heades
+    let body = {email: e}
     let h = new Headers()
     h.append('Accept', 'application/json')
     h.append('Content-Type', 'application/json')
@@ -55,24 +64,44 @@ class App extends Component {
     let options = {
       method: 'POST', 
       headers: h,
-      body: `{ "email":` + `"${e}"` + `}`
+      body: JSON.stringify(body)
     }
     let request = new Request(C.VERIFY_EMAIL, options)
-    await fetch(request)
+    let data = await fetch(request)
     .then((response) => {
-      if(response.ok) {
-        this.setState({email: e})
-        return true
-      } else {
+      if(response.status == 400) {
+        console.log("EMAIL IN USE")
+        this.displayEmailError('errMessageAlt')
         return false
+      } else if(response.status == 200) {
+        console.log("UNIQUE EMAIL")
+        return true
       }
     })
-    .catch((err) => {
-      console.log("error", err)
+    return data
+  }
+
+  displayEmailError = (type = 'errMessage') => {
+    console.log("TYPE", type)
+    if(this.state.childrenRefs.email_row.classList.contains('inactive')) {
+      this.state.childrenRefs.email_row.classList.add('active')
+      this.state.childrenRefs.email_row.classList.remove('inactive')
+      this.state.childrenRefs[type].classList.remove('fade-out')
+    } else {
+      this.state.childrenRefs.email_row.classList.add('active')
+    }
+    this.state.childrenRefs[type].classList.remove('transparent')
+    this.state.childrenRefs[type].classList.add('fade-in')
+    this.setState({
+      displayErr: true
     })
   }
   
   postRegistree = async () => {
+    let body = {email: this.state.childrenRefs[C.EMAIL].value, 
+                name: this.state.firstName + ' ' + this.state.lastName,
+                major: this.state.major
+              }
     // Create Heades
     let h = new Headers()
     h.append('Accept', 'application/json')
@@ -82,10 +111,9 @@ class App extends Component {
     let options = {
       method: 'POST', 
       headers: h,
-      body: `{  "name":` + `"${e.firstName}` + ` ${e.lastName}",` +
-               `"email":` + `"${e.email}"` + `}`
+      body: JSON.stringify(body)
     }
-    let request = new Request(C.VERIFY_EMAIL, options)
+    let request = new Request(C.POST_REGISTREE, options)
     await fetch(request)
     .then((response) => {
       if(response.ok) {
@@ -100,8 +128,16 @@ class App extends Component {
     })
   }
     
+  // pageScroll = () => {
+  //   var scrolldelay
+  //   while((window.innerHeight + window.scrollY) <= document.body.scrollHeight) {
+  //     window.scrollBy(0, 1);
+  //     scrolldelay = setTimeout(this.pageScroll, 10);
+  //   }
+  //   clearTimeout(scrolldelay)
+  // }
 
-  setInput = e => {
+  setInput = async e => {
     switch(this.state.currPrompt) {
       case C.FIRSTNAME: {
         if (/^[A-Za-z\s]+$/.test(e)) {
@@ -134,41 +170,33 @@ class App extends Component {
       }
 
       case C.EMAIL: {
+        console.log("SPINNER", this.state.childrenRefs.email_spinner)
+        this.state.childrenRefs.email_spinner.style.display = ''
         if(this.validateInput(e)) {
-          console.log( this.checkIfEmailExists(e))
-          this.state.childrenRefs.errMessage.classList.remove('fade-in')
-          this.state.childrenRefs.errMessage.classList.add('fade-out')
-          if(this.state.childrenRefs.email_row.classList.contains('active')) {
-            this.state.childrenRefs.email_row.classList.remove('active')
-            this.state.childrenRefs.email_row.classList.add('inactive')
+          if(!( await this.checkIfEmailExists(e.toLowerCase()))) {
+            this.state.childrenRefs.email_spinner.style.display = 'none'
+            break
           }
-
-          //this.state.childrenRefs.errMessage.classList.add('transparent')
-          this.setState({
-            email: e,
-            displayErr: false,
-            currPrompt: C.MAJOR
-          })
+          if(e != this.state.email) {
+            this.state.childrenRefs.errMessage.classList.remove('fade-in')
+            this.state.childrenRefs.errMessage.classList.add('fade-out')
+            this.state.childrenRefs.errMessageAlt.classList.remove('fade-in')
+            this.state.childrenRefs.errMessageAlt.classList.add('fade-out')
+            if(this.state.childrenRefs.email_row.classList.contains('active')) {
+              this.state.childrenRefs.email_row.classList.remove('active')
+              this.state.childrenRefs.email_row.classList.add('inactive')
+            }
+            
+            this.setState({
+              email: e,
+              displayErr: false,
+              currPrompt: C.MAJOR
+            })
+          }
         } else {
-          //console.log(this.state.childrenRefs)
-          console.log(this.state.childrenRefs)
-          if(this.state.childrenRefs.email_row.classList.contains('inactive')) {
-            this.state.childrenRefs.email_row.classList.add('active')
-            this.state.childrenRefs.email_row.classList.remove('inactive')
-            this.state.childrenRefs.errMessage.classList.remove('fade-out')
-          } else {
-            this.state.childrenRefs.email_row.classList.add('active')
-          }
-          this.state.childrenRefs.errMessage.classList.remove('transparent')
-          this.state.childrenRefs.errMessage.classList.add('fade-in')
-          this.setState({
-            displayErr: true
-          })
+          this.displayEmailError()
         }
-        // this.setState({
-        //   email: e,
-        //   currPrompt: C.EMAIL
-        // })
+        this.state.childrenRefs.email_spinner.style.display = 'none'
         break
       }
 
@@ -179,9 +207,10 @@ class App extends Component {
             displayErr: false
           })
         } else {
+          console.log("MAJOR", e.target.innerText)
           this.setState({
             currPrompt: C.SUBMIT,
-            major: e,
+            major: e.target.innerText,
             displayErr: false
           })
         }
@@ -207,17 +236,62 @@ class App extends Component {
 
   validateInput = email => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      return (true)
+      return true
     }
-    return (false)
+    return false
   }
+
+  changeInput = (id, e) => {
+    switch(id) {
+      case C.FIRSTNAME: {
+        this.setState({
+          firstName: e
+        })
+        break;
+      }
+      case C.LASTNAME: {
+        this.setState({
+          lastName: e
+        })
+        break;
+      }
+
+      case C.OTHER_MAJOR: {
+        this.setState({
+          major: e
+        })
+        this.pageScroll()
+        break;
+      }
+
+      case "major": {
+        this.setState({
+          major: e
+        })
+        this.pageScroll()
+        break
+      }
+    }
+
+    //   case C.EMAIL: {
+    //     console.group(C.EMAIL)
+    //     console.log(e)
+    //     console.trace()
+    //     console.groupEnd()
+    //     this.setState({
+    //       email: e
+    //     })
+    //   }
+    // }
+}
 
   render() {
     return (
       <div>
         <dropzone />
         <ParticleWrapper />
-        <Register currPrompt={this.state.currPrompt} 
+        <Register currPrompt={this.state.currPrompt}
+                  setCurPrompt={(e) => this.setState({currPrompt: e})} 
                   setInput={(e) => this.setInput(e)}
                   promptJSX={this.state.promptJSX}
                   updatePromptJSX={(JSX) => this.updatePromptJSX(JSX)}
@@ -226,6 +300,7 @@ class App extends Component {
                   passRefs={(refs) => this.setState({childrenRefs: refs})}
                   displayErr={this.state.displayErr}
                   submitForm={() => this.submitForm()}
+                  changeInput={(id, text) => this.changeInput(id, text) }
                   />
       </div>
 

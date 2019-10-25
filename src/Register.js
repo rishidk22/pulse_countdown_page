@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ParticleWrapper from "./ParticleWrapper";
 import Typist from "react-typist";
 import * as C from "./Constants";
-import { Button } from 'reactstrap'
+import { Button, Spinner } from 'reactstrap'
 import OtherMajorButton from './other_major'
 import Dropzone_ from './dropzone'
 
@@ -43,16 +43,19 @@ class Register extends Component {
     })
   }
 
-  lineTyped = (line, lineIdx) => {
-
-  }
-
   otherPrompt = () => {
     this.setState({other_major: true})
   }
 
+  handleLateButtonPress = () => {
+    if(this.props.currPrompt === C.SUBMIT) {
+      this.props.promptJSX.splice(this.props.promptJSX.length - 1, 1)
+      this.props.setCurPrompt(C.OTHER_MAJOR)
+      this.forceUpdate()
+    }
+  }
+
   dimMajors = e => {
-    console.log(e)
     for(let index = 0; index < C.MAJOR_LIST.length; index++) {
       if(e != -1) {
         if(C.MAJOR_LIST[index] === e ) {
@@ -70,29 +73,29 @@ class Register extends Component {
     <div className="majors">
         <div ref="major_list" className="transparent">
           <div className="row">
-            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  onClick={(e) => {this.props.setInput(e); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 0)})} 
+            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  id={"major"} onClick={(e) => {this.props.setInput(e); this.props.changeInput(e.target.id, e.target.innerText); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 0)})} 
           </div>
           <div className="row">
-            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  onClick={(e) => {this.props.setInput(i); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 1)})}
+            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  id={"major"} onClick={(e) => {this.props.setInput(e); this.props.changeInput(e.target.id, e.target.innerText); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 1)})}
           </div>
           <div className="row">
-            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  onClick={(e) => {this.props.setInput(i); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 2)})}
+            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  id={"major"} onClick={(e) => {this.props.setInput(e); this.props.changeInput(e.target.id, e.target.innerText); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 2)})}
           </div>
           <div className="row">
-            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  onClick={(e) => {this.props.setInput(i); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 3)})}
+            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  id={"major"} onClick={(e) => {this.props.setInput(e); this.props.changeInput(e.target.id, e.target.innerText); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 3)})}
           </div>
           <div className="row">
-            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  onClick={(e) => {this.props.setInput(i); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 4)})}
+            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  id={"major"} onClick={(e) => {this.props.setInput(e); this.props.changeInput(e.target.id, e.target.innerText); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 4)})}
           </div>
           <div className="row">
-            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  onClick={(e) => {this.props.setInput(i); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 5)})} 
+            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  id={"major"} onClick={(e) => {this.props.setInput(e); this.props.changeInput(e.target.id, e.target.innerText); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 5)})} 
           </div>
           <div className="row">
-            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  onClick={(e) => {this.props.setInput(i); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 6)})}
+            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  id={"major"} onClick={(e) => {this.props.setInput(e); this.props.changeInput(e.target.id, e.target.innerText); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 6)})}
           </div>
           <div className="row">
-            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  onClick={(e) => {this.props.setInput(i); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 7)})}
-            <div className="col-sm-5"><OtherMajorButton triggedField={() => {this.setState({show_other_major: !this.state.show_other_major}); this.props.setInput(C.OTHER_MAJOR); this.dimMajors(-1)}} /></div>
+            {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  id={"major"} onClick={(e) => {this.props.setInput(e); this.props.changeInput(e.target.id, e.target.innerText); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 7)})}
+            <div className="col-sm-5"><OtherMajorButton triggedField={() => {this.setState({show_other_major: !this.state.show_other_major}); this.props.setInput(C.OTHER_MAJOR); this.dimMajors(-1); this.handleLateButtonPress()}} /></div>
           </div>
         </div>
     </div>
@@ -100,8 +103,9 @@ class Register extends Component {
 
 
   genJSX = () => {
-    if(!this.props.renderedPrompts.includes(this.props.currPrompt)) {
-    let promptText, detailText, errText;
+    if(!this.props.renderedPrompts.includes(this.props.currPrompt)) 
+    {
+    let promptText, detailText, errText, errTextAlt;
     let showDetails = false
     switch (this.props.currPrompt) {
       case C.FIRSTNAME: {
@@ -121,6 +125,7 @@ class Register extends Component {
         showDetails = true
         detailText = "Emails will be used for checking into the Pulse 2020 conference as well as essential communciations."
         errText = "Hmm... that does not look like a valid email."
+        errTextAlt = "Hmm... it appears that this email is already in use."
         break
       }
 
@@ -169,10 +174,14 @@ class Register extends Component {
             </div>
           </div>
         }
-        {/* Email err message */}
         <div className="row transparent" ref="errMessage">
           <div className="col" id="details" style={{marginTop: '5px'}}>
             <p className="fade-in">/* {errText} */</p>
+          </div>
+        </div>
+        <div className="row transparent" ref="errMessageAlt">
+          <div className="col" id="details" style={{marginTop: '5px'}}>
+            <p className="fade-in">/* {errTextAlt} */</p>
           </div>
         </div>
         <div
@@ -183,19 +192,34 @@ class Register extends Component {
           <div className="col-sm-2">
             <p className="dollar">pulse2020$</p>
           </div>
-          <div className="col-sm-10">
+          <div className="col-sm-9">
             {this.props.currPrompt !== C.MAJOR ? (this.props.currPrompt !== C.SUBMIT ? (<form
               onSubmit={e => {
                 e.preventDefault();
-                this.props.setInput(this.refs[this.props.currPrompt].value);
+                if(this.refs[this.props.currPrompt]) this.props.setInput(this.refs[this.props.currPrompt].value);
                 this.props.passRefs(this.refs);
               }}
-            >
+            > {
+              (this.props.currPrompt === C.OTHER_MAJOR) ? (
               <input
+                id={this.props.currPrompt}
                 ref={this.props.currPrompt}
                 type="text"
                 spellCheck="false"
+                onFocus={() => {this.dimMajors(-1)}}
+                onChange={(e) => this.props.changeInput(e.target.id, e.target.value)}
+                />
+              ) : (
+              <input
+                id={this.props.currPrompt}
+                ref={this.props.currPrompt}
+                type="text"
+                spellCheck="false"
+                onChange={(e) => this.props.changeInput(e.target.id, e.target.value)}
               />
+              )
+            }
+              
             </form>) : (<Button ref={C.SUBMIT} id="submit_registration" onClick={() => this.props.submitForm()}>Yes</Button>)) :
             <Typist
               avgTypingDelay={40}
@@ -211,6 +235,11 @@ class Register extends Component {
             </Typist>
           }
           </div>
+          {this.props.currPrompt === C.EMAIL && (<div className="col-sm-1">
+            <div class="spinner-border" role="status" style={{display: 'none', color: '#fcb337'}} ref="email_spinner">
+              <span class="sr-only" >Loading...</span>
+            </div>
+          </div>)}
           </div>
           {this.props.currPrompt === C.MAJOR && (<div className="row" style={{marginTop: "-4rem"}}>
             <div className="col-sm-2">
