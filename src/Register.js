@@ -55,6 +55,11 @@ class Register extends Component {
     }
   }
 
+  focusOnOtherMajor = () => {
+    // console.log(this.refs)
+    // console.log(this.refs[C.OTHER_MAJOR])
+  }
+
   dimMajors = e => {
     for(let index = 0; index < C.MAJOR_LIST.length; index++) {
       if(e != -1) {
@@ -95,12 +100,13 @@ class Register extends Component {
           </div>
           <div className="row">
             {C.MAJOR_LIST.map((e, i) => (<div className={C.MAJOR_LIST_CLASSNAME} ref={"MAJOR_LIST_" + e}  id={"major"} onClick={(e) => {this.props.setInput(e); this.props.changeInput(e.target.id, e.target.innerText); this.dimMajors(e.target.innerText);}}>{e}</div>)).filter((e, i) => {return ((i % 8) === 7)})}
-            <div className="col-sm-5"><OtherMajorButton triggedField={() => {this.setState({show_other_major: !this.state.show_other_major}); this.props.setInput(C.OTHER_MAJOR); this.dimMajors(-1); this.handleLateButtonPress()}} /></div>
+            <div className="col-sm-5"><OtherMajorButton triggedField={() => {this.setState({show_other_major: !this.state.show_other_major}); this.props.setInput(C.OTHER_MAJOR); this.dimMajors(-1); this.handleLateButtonPress(); this.focusOnOtherMajor()}} /></div>
           </div>
         </div>
     </div>
   )
 
+  
 
   genJSX = () => {
     if(!this.props.renderedPrompts.includes(this.props.currPrompt)) 

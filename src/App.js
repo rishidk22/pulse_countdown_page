@@ -225,6 +225,7 @@ class App extends Component {
       }
 
       case C.OTHER_MAJOR: {
+        console.log(this.state.childrenRefs)
         this.setState({
           currPrompt: C.SUBMIT,
           major: e
@@ -260,7 +261,7 @@ class App extends Component {
         this.setState({
           major: e
         })
-        this.pageScroll()
+        //this.pageScroll()
         break;
       }
 
@@ -268,7 +269,7 @@ class App extends Component {
         this.setState({
           major: e
         })
-        this.pageScroll()
+        //this.pageScroll()
         break
       }
     }
