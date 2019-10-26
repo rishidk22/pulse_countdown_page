@@ -4,7 +4,6 @@ import Typist from "react-typist";
 import * as C from "./Constants";
 import { Button, Spinner } from 'reactstrap'
 import OtherMajorButton from './other_major'
-import Dropzone_ from './dropzone'
 
 class Register extends Component {
 
