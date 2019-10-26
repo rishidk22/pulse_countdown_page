@@ -49,6 +49,16 @@ div.modal-content {
   100% { filter: blur(0) }
 }
 
+.sponsor_us {
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  filter: blur(20px);
+  animation: 3s ease-out .5s 1 focus;
+  /* Duration, function, delay, number of animations, and name of animation */
+  animation-fill-mode: forwards;
+}
+
 .home-content {
   z-index: 1;
   position: fixed;
@@ -184,4 +194,17 @@ div.modal-content {
 .ui.button:hover{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: #3b1745;
+}
+
+#hoverbutton {
+  line-height: 12px;
+  font-size: 12pt;
+  font-family: tahoma;
+  position: absolute;
+  top:4rem;
+  right:2rem;
+  color: white;
+  margin: auto;
+  justify-content: center;
+  display: flex;
 }
