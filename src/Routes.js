@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
-import { LayersManager, Layer } from 'react-layers-manager';
-import styled from 'styled-components';
-
 import App from './App';
 import Schedule from './Schedule';
 import Events from './Events';
@@ -14,11 +10,7 @@ import Contact from './Contact';
 import About from './About';
 import Register from './Register';
 import SponsorUs from './SponsorUs'
-
-import Logo from "./circle-cropped.png";
 import ParticleWrapper from './ParticleWrapper';
-import ResponsiveMenu from 'react-responsive-navbar';
-import NavigationBar from './NavigationBar';
 
 class Routes extends Component {
     render() {
